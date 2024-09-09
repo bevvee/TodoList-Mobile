@@ -15,38 +15,30 @@ ColorPickerExtension is a browser extension that simplifies the process of selec
 <p href="https://visitorbadge.io/status?path=https://github.com/bevvee/TodoList-Mobile" align=center><img src="https://api.visitorbadge.io/api/visitors?path=https://github.com/bevvee/ColorPickerExtension&label=%F0%9F%A5%B3VISITORS&labelColor=%23ffff00&countColor=%23263759" /><p>
 <br />
 
-## Features
-
-**Inline Color Picker**: Access a color picker tool directly on any webpage by clicking the extension icon in your browser toolbar.
-
-**Eyedropper Tool**: Quickly identify and select colors from any element on a webpage using the built-in eyedropper tool.
-
-**Color Formats**: Copy colors in various formats, including Hexadecimal to seamlessly integrate with your coding preferences.
-
-
 ## Installation
-1. Clone the repository or download the latest release.
 
-2. Load the extension in your browser by following the browser-specific instructions for extension development.
+1. Clone the repository to your local machine:
+```
+git clone https://github.com/bevvee/TodoList-Mobile.git
+```
 
-3. Start picking colors seamlessly from any webpage!
+2. Navigate to the project directory:
+   
+ ```
+   cd TodoList-Mobile
+```
 
-## Compatibility
-Compatible with major browsers (Chrome, Firefox, Edge, etc.).
+3. Install the project Node dependencies:
+   
+```
+  npm install
+```
 
-Works across various operating systems.
+4. Start app on Android :
+   
+```
+  npm run android
+```
 
-## Contribution
-Contributions are welcome! Feel free to report issues, submit feature requests, or make pull requests to enhance the functionality and usability of the ColorPickerExtension.
 
-  1. Fork the repository.
-  2. Clone the forked repository to your local machine.
-  3. Make your changes.
-  4. Test your changes locally.
-  5. Submit a pull request.
 
-## License
-This project is licensed under the MIT License.
-
-## Disclaimer
-ColorPickerExtension is a tool aimed at simplifying color selection during web development. Use it responsibly and respect the terms of use of the websites you interact with.
