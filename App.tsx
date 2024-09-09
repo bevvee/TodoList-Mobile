@@ -1,29 +1,64 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, FlatList, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import RNFS from 'react-native-fs';
+
+const FILE_PATH = `${RNFS.DocumentDirectoryPath}/tasks.json`;
 
 const App = () => {
   const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]); // Initialize tasks with static data
+  const [tasks, setTasks] = useState([]);
   const [showDoneTasks, setShowDoneTasks] = useState(false);
   const [date, setDate] = useState(new Date());
+
+  // Load tasks from file when the app starts
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  const loadTasks = async () => {
+    try {
+      const fileExists = await RNFS.exists(FILE_PATH);
+      if (fileExists) {
+        const fileContents = await RNFS.readFile(FILE_PATH);
+        setTasks(JSON.parse(fileContents));
+      }
+    } catch (error) {
+      console.error('Failed to load tasks:', error);
+    }
+  };
+
+  const saveTasks = async (tasksToSave) => {
+    try {
+      await RNFS.writeFile(FILE_PATH, JSON.stringify(tasksToSave), 'utf8');
+    } catch (error) {
+      console.error('Failed to save tasks:', error);
+    }
+  };
 
   const addTask = () => {
     if (task.trim() !== '') {
       const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1; 
-      setTasks([...tasks, { id: newId, value: task, statut: false, date: null }]); // Add new task with the generated id
-      setTask('');  // Reset input field after adding the task
+      const newTask = { id: newId, value: task, statut: false, date: null };
+      const updatedTasks = [...tasks, newTask];
+      setTasks(updatedTasks);
+      saveTasks(updatedTasks); // Save tasks to file
+      setTask(''); // Reset input field after adding the task
     }
   };
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+    saveTasks(updatedTasks); // Save tasks to file
   };
 
   const toggleStatut = (taskId) => {
-    setTasks(tasks.map(task => 
+    const updatedTasks = tasks.map(task => 
       task.id === taskId ? { ...task, statut: !task.statut, date: !task.statut ? date : null } : task
-    ));
+    );
+    setTasks(updatedTasks);
+    saveTasks(updatedTasks); // Save tasks to file
   };
 
   const filteredTasks = showDoneTasks ? tasks.filter(task => task.statut) : tasks.filter(task => !task.statut);
@@ -33,7 +68,7 @@ const App = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
-      <Text style={styles.header}>To-Do List</Text>
+      <Text style={styles.header}>My Tasks</Text>
       <TextInput
         placeholder="Add a new task"
         value={task}
@@ -67,6 +102,7 @@ const App = () => {
         keyExtractor={(item) => item.id.toString()}
       />
 
+     
     </KeyboardAvoidingView>
   );
 };
