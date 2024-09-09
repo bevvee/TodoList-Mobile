@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, FlatList, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const App = () => {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]); // Initialize tasks with static data
+  const [showDoneTasks, setShowDoneTasks] = useState(false);
+  const [date, setDate] = useState(new Date());
 
   const addTask = () => {
     if (task.trim() !== '') {
       const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1; 
-      setTasks([...tasks, { id: newId, value: task, statut: false }]); // Add new task with the generated id
+      setTasks([...tasks, { id: newId, value: task, statut: false, date: null }]); // Add new task with the generated id
       setTask('');  // Reset input field after adding the task
     }
   };
@@ -19,10 +22,11 @@ const App = () => {
 
   const toggleStatut = (taskId) => {
     setTasks(tasks.map(task => 
-      task.id === taskId ? { ...task, statut: !task.statut } : task
+      task.id === taskId ? { ...task, statut: !task.statut, date: !task.statut ? date : null } : task
     ));
   };
-  
+
+  const filteredTasks = showDoneTasks ? tasks.filter(task => task.statut) : tasks.filter(task => !task.statut);
 
   return (
     <KeyboardAvoidingView
@@ -37,15 +41,22 @@ const App = () => {
         style={styles.input}
       />
       <Button title="Add Task" onPress={addTask} />
+      
+      <View style={styles.menu}>
+        <Button title="Show Pending" onPress={() => setShowDoneTasks(false)} />
+        <Button title="Show Done" onPress={() => setShowDoneTasks(true)} />
+      </View>
+
       <FlatList
-        data={tasks}
+        data={filteredTasks}
         renderItem={({ item }) => (
           <View style={styles.taskItem}>
             <Text>{item.id}. {item.value}</Text>
             <View>
-              <Text>Status: {item.statut ? 'Done' : 'pending'}</Text>
+              <Text>Status: {item.statut ? 'Done' : 'Pending'}</Text>
+              {item.statut && item.date && <Text>Date Completed: {item.date.toLocaleDateString()}</Text>}
               <TouchableOpacity onPress={() => toggleStatut(item.id)}>
-                <Text style={styles.toggleButton}>{item.statut ? 'Mark as pending' : 'Mark as Done'}</Text>
+                <Text style={styles.toggleButton}>{item.statut ? 'Mark as Pending' : 'Mark as Done'}</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={() => deleteTask(item.id)}>
@@ -55,6 +66,7 @@ const App = () => {
         )}
         keyExtractor={(item) => item.id.toString()}
       />
+
     </KeyboardAvoidingView>
   );
 };
@@ -92,6 +104,11 @@ const styles = StyleSheet.create({
   },
   toggleButton: {
     color: 'blue',
+  },
+  menu: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 10,
   },
 });
 
