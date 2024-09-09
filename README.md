@@ -1,79 +1,52 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<h1 align='center'>
+My Tasks
+</h1>
+<p align='center'> 
+ColorPickerExtension is a browser extension that simplifies the process of selecting and copying colors from web pages. Enhance your web development workflow with an easy-to-use color picker tool directly integrated into your browser.
+<p> 
+<p align='center'>
+  <a href="#">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/bevvee/ColorPickerExtension?style=flat">
+</a>
+    <a href="#">
+  <img alt="Forks" src="https://img.shields.io/github/forks/bevvee/ColorPickerExtension?style=flat-square&labelColor=343b41"/>
+      </a>&nbsp;&nbsp;
+</p>
+<p href="https://visitorbadge.io/status?path=https://github.com/bevvee/TodoList-Mobile" align=center><img src="https://api.visitorbadge.io/api/visitors?path=https://github.com/bevvee/ColorPickerExtension&label=%F0%9F%A5%B3VISITORS&labelColor=%23ffff00&countColor=%23263759" /><p>
+<br />
 
-# Getting Started
+## Features
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+**Inline Color Picker**: Access a color picker tool directly on any webpage by clicking the extension icon in your browser toolbar.
 
-## Step 1: Start the Metro Server
+**Eyedropper Tool**: Quickly identify and select colors from any element on a webpage using the built-in eyedropper tool.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+**Color Formats**: Copy colors in various formats, including Hexadecimal to seamlessly integrate with your coding preferences.
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+## Installation
+1. Clone the repository or download the latest release.
 
-# OR using Yarn
-yarn start
-```
+2. Load the extension in your browser by following the browser-specific instructions for extension development.
 
-## Step 2: Start your Application
+3. Start picking colors seamlessly from any webpage!
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Compatibility
+Compatible with major browsers (Chrome, Firefox, Edge, etc.).
 
-### For Android
+Works across various operating systems.
 
-```bash
-# using npm
-npm run android
+## Contribution
+Contributions are welcome! Feel free to report issues, submit feature requests, or make pull requests to enhance the functionality and usability of the ColorPickerExtension.
 
-# OR using Yarn
-yarn android
-```
+  1. Fork the repository.
+  2. Clone the forked repository to your local machine.
+  3. Make your changes.
+  4. Test your changes locally.
+  5. Submit a pull request.
 
-### For iOS
+## License
+This project is licensed under the MIT License.
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Disclaimer
+ColorPickerExtension is a tool aimed at simplifying color selection during web development. Use it responsibly and respect the terms of use of the websites you interact with.
